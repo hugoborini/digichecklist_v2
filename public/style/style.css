@@ -1,0 +1,331 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+@font-face {
+    font-family: 'VCR OSD Mono';
+    font-style: normal;
+    font-weight: normal;
+    src: local('VCR OSD Mono'), url('../font/VCR_OSD_MONO_1.001[1].woff') format('woff');
+}
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+body{
+    background-color: black;
+
+}
+
+a{
+    outline: none;
+    text-decoration: none;
+}
+.title{
+    color: #0E2904;
+    font-family: 'Poppins', sans-serif;
+    font-size: 100px;
+    font-weight: 900;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+}
+
+.category{
+    display: flex;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+}
+
+.category::-webkit-scrollbar {
+    display: none;
+}
+
+.category_container{
+    height: 140px;
+    flex: 0 0 auto;
+    margin-left: 30px;
+    width: 510px;
+    border-radius: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #002602;
+}
+
+.category_text{
+    font-family: 'Poppins', sans-serif;
+    font-size: 35px;
+    color: #03AB1D;
+}
+
+
+.activite{
+    margin-top: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.activite_container{
+    display: flex;
+    align-items: center;
+    border-radius: 30px;
+    height: 250px;
+    margin-top: 91px;
+    width: 95%;
+    background-color: #002602;
+}
+.activite_check{
+    flex-basis: 15%;
+    display: flex;
+    justify-content: center;
+}
+.activite_name{
+    font-family: 'Poppins', sans-serif;
+    font-size: 60px;
+    color: #03AB1D;
+    flex-basis: 70%;
+    display: flex;
+    justify-content: center;
+}
+
+.activite_cross{
+    flex-basis: 15%;
+}
+
+
+
+button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 40px;
+    height: 22px;
+    background: none;
+    box-shadow: none;
+    border: none;
+    outline: 0;
+    cursor: pointer;
+    z-index: 10;
+}
+button span {
+    position: absolute;
+    left: 50%;
+    width: 63px;
+    height: 10px;
+    background-color: #002602;
+}
+button span:nth-child(1) {
+    top: 0;
+    transform: translateX(-50%) translateY(0);
+    transition: top 0.3s cubic-bezier(0.21, 0.83, 0.26, 0.87) 0.3s, transform 0.3s cubic-bezier(0.21, 0.83, 0.26, 0.87);
+}
+button span:nth-child(2) {
+    top: 19px;
+    opacity: 1;
+    transform: translateX(-50%);
+}
+button span:last-child {
+    top: 38px;
+    transform: translateX(-50%) translateY(0);
+    transition: top 0.3s cubic-bezier(0.21, 0.83, 0.26, 0.87) 0.3s, transform 0.3s cubic-bezier(0.21, 0.83, 0.26, 0.87);
+}
+button.open span:nth-child(1) {
+    top: 50%;
+    transform: translateX(-50%) translateY(0) rotate(45deg);
+    transition: top 0.3s cubic-bezier(0.21, 0.83, 0.26, 0.87), transform 0.3s cubic-bezier(0.21, 0.83, 0.26, 0.87) 0.3s;
+}
+button.open span:nth-child(2) {
+    opacity: 0;
+}
+button.open span:last-child {
+    top: 50%;
+    transform: translateX(-50%) translateY(0) rotate(-45deg);
+    transition: bottom 0.3s cubic-bezier(0.21, 0.83, 0.26, 0.87), transform 0.3s cubic-bezier(0.21, 0.83, 0.26, 0.87) 0.3s;
+}
+
+nav{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translateX(-100vw);
+    background-color: black;
+    transition: transform 0.5s;
+}
+
+.open{
+    transform: translateX(0px);
+}
+
+.title_add{
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #03AB1D;
+    margin: auto;
+    margin-top: 100px;
+    height: 115px;
+    font-family: VCR OSD Mono;
+    font-size: 50px;
+}
+
+.tile_add{
+    color : #03AB1D;
+    font-family: VCR OSD Mono;
+    font-size: 35px;
+    margin-top: 130px;
+    margin-left: 10vw;
+}
+
+/* .cmd, .cmd span:not(.fas):not(.far):not(.fa), .terminal, .terminal-output>:not(.raw), .terminal-output>:not(.raw) a, .terminal-output>:not(.raw) span:not(.fas):not(.far):not(.fa) {
+    font-family: VCR OSD Mono;
+    font-size: 40px;
+}
+
+.terminal {
+    --color: #03AB1D;
+    margin-left: 5vw;
+}
+
+.tile_add_term{
+    color : #03AB1D;
+    font-family: VCR OSD Mono;
+    font-size: 35px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: calc(10vw - 5vw) ;
+} */
+
+.termLike{
+    margin-top: 64px;
+    display: flex;
+    align-items: center;
+    margin-left: 10vw;
+    color: #03AB1D;
+    font-size: 40px;
+    font-family: VCR OSD Mono;
+}
+/* 
+.termLike input{
+    background-color: black;
+    color: #03AB1D;
+    font-family: VCR OSD Mono;
+    font-size: 40px;
+    outline: none;
+    border: none;
+    caret-color: #03AB1D;
+} */
+
+#cmd {
+    font-family: VCR OSD Mono;
+    font-size: 40px;
+    background: black;
+    color: #21f838;
+    padding: 5px;
+    overflow: hidden;
+  }
+  #cmd span {
+    float: left;
+    padding-left: 3px;
+    white-space: pre;
+  }
+  #cursor {
+    float: left;
+    width: 30px;
+    height: 40px;
+    background: #21f838;
+  }
+  input {
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+
+  .tmpcategory{
+    display: grid;
+	grid-template-columns: repeat( auto-fit, minmax(250px, 1.5fr) );
+	grid-column-gap: 10px;
+	grid-row-gap: 10px;
+  }
+  .tmpcategory .categoryAdd{
+      font-size: 25px !important;
+
+      border: 1px solid #21f838;
+      transition: all 0.5s;
+  }
+
+.click{
+    background-color: #21f838;
+    color: black;
+}
+
+.tmpbutton{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 150px;
+
+}
+
+.button{
+    color: black;
+    font-size: 30px;
+    border-radius: 40px;
+    background-color: #21f838;
+    font-family: VCR OSD Mono;
+    width: 30%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.barre{
+    text-decoration:line-through;
+}
+
+.line-1{
+    margin: 70px auto;
+    border-right: 2px solid rgba(255,255,255,.75);
+    font-size: 180%;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    transform: translateY(-50%);
+}
+
+/* Animation */
+.anim-typewriter{
+    font-family: VCR OSD Mono;
+    font-size: 30px;
+  color: #21f838;
+  animation: typewriter 2s steps(44) 1s 1 normal both,
+             blinkTextCursor 500ms steps(44) infinite normal;
+}
+@keyframes typewriter{
+  from{width: 0;}
+  to{width: 22em;}
+}
+@keyframes blinkTextCursor{
+  from{border-right: #21f838 50px;}
+  to{border-right-color: transparent;}
+}
+
+.none{
+    display: none !important;
+}
+
+.tmpRepeat{
+    display: flex;
+    width: 100%;
+    justify-content: center ;
+}
+
+.activite_name p{
+    text-align: center;
+}

@@ -1,0 +1,123 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}list digiactivites{% endblock %}
+
+{% block javascripts %}
+    <script>
+        let checks = document.querySelectorAll(".activite_check img")
+
+        checks.forEach(check => {
+            check.addEventListener("click", ()=>{
+
+                if(check.getAttribute("src") == "{{asset("image/Checked.svg")}}"){
+                    check.setAttribute("src", `{{asset("image/Unchecked.svg")}}`)
+                } else{
+                    check.setAttribute("src", `{{asset("image/Checked.svg")}}`)
+                }
+
+
+                document.querySelector("#name_" + check.id).classList.toggle("barre")
+
+
+                //ajax request
+
+                $.ajax({
+					url: `/ajax/addCheck`,
+					type: "post",
+					data: JSON.stringify({id: check.id}),
+            		success:function(data){
+                		console.log(data);
+					}
+				})
+            })
+
+        });
+    </script>
+
+
+{% endblock %}
+{% block body %}
+    <nav >
+        <div class="title_add">
+            <p>Ajoute une digiactivité</p>
+        </div>
+        <div class="tile_add first">nom de la digiactivites</div>
+        <div class="termLike">
+            <span>>$</span>
+            <div id="cmd">
+                <span></span>
+                <div id="cursor"></div>
+            </div>
+            <form id="myForm">
+                <input type="text" name="command" value="" />
+            </form>
+            </div>
+
+            <div class="tile_add tmpmsg">
+
+            </div>
+
+            <div class="tile_add tmpcategory">
+
+            </div>
+
+            <div class="tmpbutton">
+
+            </div>
+
+            <div class="tmpValide">
+            </div>
+
+            <div class="tmpRepeat none">
+                <img src="{{asset('image/repeat.svg')}}" alt="" srcset="">
+            </div>
+    </nav>
+
+    <button>
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <div class="center">
+        <h1 class="title">DigiChecklists</h1>
+    </div>
+
+    <div class="category">
+        <a href="{{path("app_list")}}" class="category_container">
+                <p class="category_text">Tout</p>
+            </a>
+        {% for category in categorys %}
+            <a href={{path("app_list_category", {category_id: category.id})}} id="{{category.id}}" class="category_container">
+                <p class="category_text">{{category.nameCategory}}</p>
+            </a>
+        {% endfor %}
+    </div>
+
+    <div class="activite">
+        {% for activite in activites %}
+            <div class="activite_container" id="activite_{{activite.id}}">
+                {% if activite.isCheck %}
+                    <div class="activite_check"><img  id="{{activite.id}}" src="{{ asset('image/Checked.svg') }}" alt="" srcset=""> </div>
+                    <div class="activite_name"><p class="barre" id="name_{{activite.id}}" >{{activite.nameActivivite}}</p></div>
+                    {% else %}
+                    <div class="activite_check"><img  id="{{activite.id}}" src="{{ asset('image/Unchecked.svg') }}" alt="" srcset=""> </div>
+                    <div class="activite_name"><p id="name_{{activite.id}}" >{{activite.nameActivivite}}</p></div>
+                {% endif %}
+
+                <div class="activite_cross"> <img id="{{activite.id}}" src="{{ asset('image/ErrorColor.png') }}" alt="" srcset=""> </div>
+            </div>
+        {% endfor %}
+
+    </div>
+
+<script>
+    categoryArray = []
+    {% for category in categorys %}
+       categoryArray.push({ '{{category.id}}': '{{category.nameCategory}}' })
+    {% endfor %}
+</script>
+
+<script src="{{asset("js/term.js")}}"></script>
+<script src="{{asset("js/supList.js")}}"></script>
+
+{% endblock %}
